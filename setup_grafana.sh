@@ -44,4 +44,21 @@ sudo systemctl reload nginx
 # We need to get current servers ipv4 address
 public_ip=$(curl -s https://ipinfo.io/ip)
 
-echo "Grafana is now accessible at http://$public_ip:6008 (admin:admin) (you should probably change this)
+# Wait for Grafana to start
+echo "Waiting on Grafana to start..."
+sleep 10
+
+# Add the datasource
+curl -X "POST" "http://admin:admin@localhost:3000/api/datasources" \
+     -H "Content-Type: application/json" \
+     --data-binary "@grafana_dashboard/reth.yml"
+
+# Add the dashboard
+DASHBOARD_JSON=$(cat grafana_dashboard/reth.json)
+DATA="{\"dashboard\":$DASHBOARD_JSON,\"overwrite\":true, \"folderId\": 0}"
+curl -X "POST" "http://admin:admin@localhost:3000/api/dashboards/db" \
+     -H "Content-Type: application/json" \
+     -d "$DATA"
+
+# Echo the URL
+echo "Grafana is now accessible at http://$public_ip:6008 (admin:admin) (you should probably change this)"
