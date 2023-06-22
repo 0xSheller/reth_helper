@@ -19,6 +19,8 @@ then run in order:
 
 `sudo ./setup_prometheus.sh`
 
+`sudo ./setup_grafana.sh`
+
 `sudo ./start_reth.sh` (nohup / setup as a service / screen)
 
 `sudo ./start_lighthouse.sh`(nohup / setup as a service / screen)

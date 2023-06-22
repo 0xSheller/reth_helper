@@ -26,7 +26,8 @@ sudo aws configure set default.region $AWS_REGION
 #sudo chmod +x build_archive_node.sh
 sudo chmod +x status.sh
 sudo chmod +x setup_nginx.sh
-sudo chmod +x install_promethus.sh
+sudo chmod +x setup_promethus.sh
+sudo chmod +x setup_grafana.sh
 
 # 6) Reboot the server
 sudo reboot
