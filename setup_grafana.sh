@@ -28,8 +28,8 @@ server {
         proxy_set_header X-Real-IP \$remote_addr;
 
         # Basic Authentication
-        auth_basic "Restricted Content";
-        auth_basic_user_file /etc/nginx/.htpasswd;
+#        auth_basic "Restricted Content";
+#        auth_basic_user_file /etc/nginx/.htpasswd;
     }
 }
 EOL
@@ -44,4 +44,4 @@ sudo systemctl reload nginx
 # We need to get current servers ipv4 address
 public_ip=$(curl -s https://ipinfo.io/ip)
 
-echo "Grafana is now accessible at http://$public_ip:6008"
+echo "Grafana is now accessible at http://$public_ip:6008 (admin:admin) (you should probably change this)
