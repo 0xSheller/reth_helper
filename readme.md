@@ -1,8 +1,8 @@
 Just a bunch of scripts to help you get started with reth
 
+This assumes you have a disk mounted on /chain for an archive node. Might need to change dirs, ill update this to be more interactive in the future when i have time.
 
-This assumes you have a disk mounted on /chain for an archive node. Might need to change dirs, ill update this to be more interactive in the future when i have time. But it's setup for aarch64/arm64 machines. If you're not using this arch, just change the prometheus URL to reflect whatever arch you're using. 
-
+Change the prometheus script variables to reflect whatever arch you're using. 
 
 Change line 11 of `setup_nginx.sh` to reflect desired credentials (currently user is user, and pass is securepassword).
 
@@ -20,6 +20,8 @@ then run in order:
 `sudo ./setup_prometheus.sh`
 
 `sudo ./setup_grafana.sh`
+
+`sudo ./setup_ufw.sh`
 
 `sudo ./start_reth.sh` (nohup / setup as a service / screen)
 

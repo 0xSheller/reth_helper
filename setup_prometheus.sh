@@ -1,33 +1,34 @@
 #!/bin/bash
 
 # Set version number (check for the latest version on the Prometheus website)
-PROMETHEUS_VERSION="2.44.0"
+PROMETHEUS_VERSION="2.45.0"
+ARCH="amd64"
 
 # Download Prometheus
-wget "https://github.com/prometheus/prometheus/releases/download/v${PROMETHEUS_VERSION}/prometheus-${PROMETHEUS_VERSION}.linux-arm64.tar.gz"
+wget "https://github.com/prometheus/prometheus/releases/download/v${PROMETHEUS_VERSION}/prometheus-${PROMETHEUS_VERSION}.linux-${ARCH}.tar.gz"
 
 # Extract the downloaded file
-tar xvfz "prometheus-${PROMETHEUS_VERSION}.linux-arm64.tar.gz"
+tar xvfz "prometheus-${PROMETHEUS_VERSION}.linux-${ARCH}.tar.gz"
 
 # Move Prometheus and configuration files to /usr/local/bin
-sudo mv "prometheus-${PROMETHEUS_VERSION}.linux-arm64/prometheus" /usr/local/bin/
-sudo mv "prometheus-${PROMETHEUS_VERSION}.linux-arm64/promtool" /usr/local/bin/
+sudo mv "prometheus-${PROMETHEUS_VERSION}.linux-${ARCH}/prometheus" /usr/local/bin/
+sudo mv "prometheus-${PROMETHEUS_VERSION}.linux-${ARCH}/promtool" /usr/local/bin/
 
 # Move consoles and console_libraries directories to /etc/prometheus
 sudo mkdir -p /etc/prometheus
-sudo mv "prometheus-${PROMETHEUS_VERSION}.linux-arm64/consoles" /etc/prometheus
-sudo mv "prometheus-${PROMETHEUS_VERSION}.linux-arm64/console_libraries" /etc/prometheus
+sudo mv "prometheus-${PROMETHEUS_VERSION}.linux-${ARCH}/consoles" /etc/prometheus
+sudo mv "prometheus-${PROMETHEUS_VERSION}.linux-${ARCH}/console_libraries" /etc/prometheus
 
 # Move prometheus.yml to /etc/prometheus and add the target localhost:5005
-sudo mv "prometheus-${PROMETHEUS_VERSION}.linux-arm64/prometheus.yml" /etc/prometheus
+sudo mv "prometheus-${PROMETHEUS_VERSION}.linux-${ARCH}/prometheus.yml" /etc/prometheus
 echo "  - job_name: 'localhost'
     static_configs:
     - targets: ['localhost:5005']
 " | sudo tee -a /etc/prometheus/prometheus.yml
 
 # Clean up the downloaded files
-rm -rf "prometheus-${PROMETHEUS_VERSION}.linux-arm64"
-rm "prometheus-${PROMETHEUS_VERSION}.linux-arm64.tar.gz"
+rm -rf "prometheus-${PROMETHEUS_VERSION}.linux-${ARCH}"
+rm "prometheus-${PROMETHEUS_VERSION}.linux-${ARCH}.tar.gz"
 
 # Create a systemd service file for Prometheus
 sudo bash -c 'cat << EOL > /etc/systemd/system/prometheus.service

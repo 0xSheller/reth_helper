@@ -17,24 +17,6 @@ sudo apt-get install grafana -y
 sudo systemctl enable grafana-server
 sudo systemctl start grafana-server
 
-# Create a configuration file for the reverse proxy
-sudo bash -c 'cat <<EOL > /etc/nginx/sites-available/grafana-proxy
-server {
-    listen 6008;
-
-    location / {
-        proxy_pass http://localhost:3000; # The address of the app you are proxying to
-        proxy_set_header Host \$host;
-        proxy_set_header X-Real-IP \$remote_addr;
-
-        # Basic Authentication
-#        auth_basic "Restricted Content";
-#        auth_basic_user_file /etc/nginx/.htpasswd;
-    }
-}
-EOL
-'
-
 # Create a symbolic link to enable the configuration
 sudo ln -s /etc/nginx/sites-available/grafana-proxy /etc/nginx/sites-enabled/
 

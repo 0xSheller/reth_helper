@@ -10,25 +10,7 @@ sudo systemctl start nginx
 # Create password file for basic auth (username is 'user')
 echo "user:$(openssl passwd -apr1 securepassword)" | sudo tee /etc/nginx/.htpasswd
 
-# Create a configuration file for the reverse proxy
-sudo bash -c 'cat <<EOL > /etc/nginx/sites-available/metrics-proxy
-server {
-    listen 6007;
-
-    location / {
-        proxy_pass http://localhost:5005; # The address of the app you are proxying to
-        proxy_set_header Host \$host;
-        proxy_set_header X-Real-IP \$remote_addr;
-
-        # Basic Authentication
-        auth_basic "Restricted Content";
-        auth_basic_user_file /etc/nginx/.htpasswd;
-    }
-}
-EOL
-'
-
-# Create a configuration file for the reverse proxy
+# Create a configuration file for the prometheus proxy
 sudo bash -c 'cat <<EOL > /etc/nginx/sites-available/prometheus-proxy
 server {
     listen 6006;
@@ -46,11 +28,46 @@ server {
 EOL
 '
 
-# Create a symbolic link to enable the configuration
-sudo ln -s /etc/nginx/sites-available/prometheus-proxy /etc/nginx/sites-enabled/
+# Create a configuration file for the reth logs proxy
+sudo bash -c 'cat <<EOL > /etc/nginx/sites-available/metrics-proxy
+server {
+    listen 6007;
+
+    location / {
+        proxy_pass http://localhost:5005; # The address of the app you are proxying to
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+
+        # Basic Authentication
+        auth_basic "Restricted Content";
+        auth_basic_user_file /etc/nginx/.htpasswd;
+    }
+}
+EOL
+'
+
+# Create a configuration file for the grafana proxy
+sudo bash -c 'cat <<EOL > /etc/nginx/sites-available/grafana-proxy
+server {
+    listen 6008;
+
+    location / {
+        proxy_pass http://localhost:3000; # The address of the app you are proxying to
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+
+        # Basic Authentication
+#        auth_basic "Restricted Content";
+#        auth_basic_user_file /etc/nginx/.htpasswd;
+    }
+}
+EOL
+'
 
 # Create a symbolic link to enable the configuration
-sudo ln -s /etc/nginx/sites-available/reverse-proxy /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/prometheus-proxy /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/metrics-proxy /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/grafana-proxy /etc/nginx/sites-enabled/
 
 # Reload Nginx to apply the new configuration
 sudo systemctl reload nginx

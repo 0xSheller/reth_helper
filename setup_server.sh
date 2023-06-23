@@ -28,6 +28,7 @@ sudo chmod +x status.sh
 sudo chmod +x setup_nginx.sh
 sudo chmod +x setup_promethus.sh
 sudo chmod +x setup_grafana.sh
+sudo chmod +x setup_ufw.sh
 
 # 6) Reboot the server
 sudo reboot
