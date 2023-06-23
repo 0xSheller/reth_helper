@@ -17,12 +17,6 @@ sudo apt-get install grafana -y
 sudo systemctl enable grafana-server
 sudo systemctl start grafana-server
 
-# Create a symbolic link to enable the configuration
-sudo ln -s /etc/nginx/sites-available/grafana-proxy /etc/nginx/sites-enabled/
-
-# Reload Nginx to apply the new configuration
-sudo systemctl reload nginx
-
 # We need to get current servers ipv4 address
 public_ip=$(curl -s https://ipinfo.io/ip)
 
