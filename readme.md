@@ -15,13 +15,15 @@ then run in order:
 
 `sudo ./setup_server.sh`
 
+`sudo ./setup_ufw.sh`
+
 `sudo ./setup_nginx.sh`
 
 `sudo ./setup_prometheus.sh`
 
 `sudo ./setup_grafana.sh`
 
-`sudo ./setup_ufw.sh`
+`sudo ./setup_siren.sh`
 
 `sudo ./start_reth.sh` (nohup / setup as a service / screen)
 
