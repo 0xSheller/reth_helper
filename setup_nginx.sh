@@ -57,8 +57,8 @@ server {
         proxy_set_header X-Real-IP \$remote_addr;
 
         # Basic Authentication
-        auth_basic "Restricted Content";
-        auth_basic_user_file /etc/nginx/.htpasswd;
+        #auth_basic "Restricted Content";
+        #auth_basic_user_file /etc/nginx/.htpasswd;
     }
 }
 EOL
