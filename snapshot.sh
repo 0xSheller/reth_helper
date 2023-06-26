@@ -4,7 +4,7 @@
 source load_variables.sh
 
 # Set the base directory path
-BASE_DIR=$
+BASE_DIR=$BASE_DIR
 
 # Get the current date in the format MMDDYYYY
 DATE=$(date +%m%d%Y)
