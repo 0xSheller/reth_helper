@@ -24,14 +24,14 @@ sudo chmod +x restore.sh
 source load_variables.sh
 
 # 5) Make the dirs
-sudo mkdir /chain
-sudo mkdir /chain/$NODE_CLIENT
-sudo mkdir /chain/$NODE_CLIENT/data
-sudo mv /home/ubuntu/reth_helpers/start_reth.sh /chain/$NODE_CLIENT/
+sudo mkdir /$BASE_DIR
+sudo mkdir /$BASE_DIR/$NODE_CLIENT
+sudo mkdir /$BASE_DIR/$NODE_CLIENT/data
+sudo mv /home/ubuntu/reth_helpers/start_reth.sh /$BASE_DIR/$NODE_CLIENT/
 
-sudo mkdir /chain/lighthouse
-sudo mkdir /chain/lighthouse/data
-sudo mv /home/ubuntu/reth_helpers/start_lighthouse.sh /chain/lighthouse/
+sudo mkdir /$BASE_DIR/lighthouse
+sudo mkdir /$BASE_DIR/lighthouse/data
+sudo mv /home/ubuntu/reth_helpers/start_lighthouse.sh /$BASE_DIR/lighthouse/
 
 # 6) Add a cron job entry
 (crontab -l ; echo "0 0 * * 0 /bin/bash ~/reth_helpers/snapshot.sh") | crontab -
