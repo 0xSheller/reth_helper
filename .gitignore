@@ -4,3 +4,4 @@
 .idea/vcs.xml
 *.txt
 .env
+start_erigon.sh
