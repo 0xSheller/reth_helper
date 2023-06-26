@@ -37,6 +37,8 @@ then run in order:
 
 use: https://github.com/paradigmxyz/local_reth/tree/main/grafana/provisioning for dashboard
 
-If you dont plan on taking snapshots of your chaindata, you can remove the snapshot script and the cronjob in setup_server.sh
+If you don't plan on taking snapshots of your chaindata, you can remove the snapshot script and the cronjob in setup_server.sh
 
-I will maintain a EBS snapshot of reth & erigon at a later point and update these scripts, this is still early but will help others get started.
+I will maintain a EBS snapshot of reth at a later point and update these scripts, this is still early but will help others get started.
+
+(I only added erigon"support" because I have a erigon node that took weeks to sync, I would like to keep a backup in case i ever wanna benchmark things in the future)
