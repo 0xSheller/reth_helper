@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Load the environment variables
+source load_variables.sh
+
 # Install Nginx
 sudo apt install nginx -y
 
@@ -8,7 +11,7 @@ sudo systemctl enable nginx
 sudo systemctl start nginx
 
 # Create password file for basic auth (username is 'user')
-echo "user:$(openssl passwd -apr1 securepassword)" | sudo tee /etc/nginx/.htpasswd
+echo "$NGINX_USER:$(openssl passwd -apr1 $NGINX_PASS)" | sudo tee /etc/nginx/.htpasswd
 
 # Create a configuration file for the prometheus proxy
 sudo bash -c 'cat <<EOL > /etc/nginx/sites-available/prometheus-proxy

@@ -3,5 +3,4 @@
 .idea/reth_helpers.iml
 .idea/vcs.xml
 *.txt
-check.sh
-setup_wasabi.sh
+.env

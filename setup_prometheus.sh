@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# Set version number (check for the latest version on the Prometheus website)
-PROMETHEUS_VERSION="2.45.0"
-ARCH="amd64"
+# Load the environment variables
+source load_variables.sh
 
 # Download Prometheus
 wget "https://github.com/prometheus/prometheus/releases/download/v${PROMETHEUS_VERSION}/prometheus-${PROMETHEUS_VERSION}.linux-${ARCH}.tar.gz"

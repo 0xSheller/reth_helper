@@ -1,16 +1,22 @@
 Just a bunch of scripts to help you get started with reth
 
-This assumes you have a disk mounted on /chain for an archive node. Might need to change dirs, ill update this to be more interactive in the future when i have time.
+.env Example:
+```
+ARCH="amd64"
+NODE_CLIENT="erigon"
+BUCKET_NAME="rpc-backups"
+BASE_DIR="chain"
+NGINX_USER="user"
+NGINX_PASS="securepassword"
+PROMETHEUS_VERSION="2.45.0"
+AWS_ACCESS_KEY=""
+AWS_SECRET_KEY=""
+AWS_REGION=""
+```
 
-Change the prometheus script variables to reflect whatever arch you're using. 
-
-Change line 11 of `setup_nginx.sh` to reflect desired credentials (currently user is user, and pass is securepassword).
-
-You can change prometheus version in setup_prometheus.sh
-[setup_nginx.sh](setup_nginx.sh)
+Self-explanatory, you can use the same bucket for both nodes, just make sure you have the correct permissions set up. BASE_DIR is where data will be stored. 
 
 then run in order:
-[setup_nginx.sh](setup_nginx.sh)
 `chmod +x setup_server.sh`
 
 `sudo ./setup_server.sh`
@@ -25,11 +31,12 @@ then run in order:
 
 `sudo ./setup_siren.sh`
 
-`sudo ./start_reth.sh` (nohup / setup as a service / screen)
+`sudo ./start_reth.sh` or `sudo ./start_erigon` (nohup / setup as a service / screen)
 
 `sudo ./start_lighthouse.sh`(nohup / setup as a service / screen)
 
-
 use: https://github.com/paradigmxyz/local_reth/tree/main/grafana/provisioning for dashboard
 
-I will maintain a EBS snapshot of reth at a later point and update these scripts, this is still early but will help others get started.
+If you dont plan on taking snapshots of your chaindata, you can remove the snapshot script and the cronjob in setup_server.sh
+
+I will maintain a EBS snapshot of reth & erigon at a later point and update these scripts, this is still early but will help others get started.
