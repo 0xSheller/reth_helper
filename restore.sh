@@ -3,25 +3,10 @@
 # Load the environment variables
 source load_variables.sh
 
-# Set the RPC type (reth or erigon)
-RPC_TYPE=$NODE_CLIENT
+## TODO: pull the most recent snapshot date from the bucket, possibly some kind of .json or something that the snapshot.sh script writes to when it runs, because current implementation assumes that snapshots will be maintained indefinitely
 
-# Set the Wasabi S3 bucket name
-BUCKET_NAME=$BUCKET_NAME
-
-# Set the base directory path
-BASE_DIR="/$BASE_DIR"
-
-# Get the current date in the format MMDDYYYY
-DATE=$(date +%m%d%Y)
-
-# Set the destination folder path in the bucket
-DESTINATION_FOLDER="$RPC_TYPE/$DATE"
-
-# Create the destination folder in the bucket
-aws s3 mkdir "s3://$BUCKET_NAME/$DESTINATION_FOLDER" --endpoint-url=https://s3.wasabisys.com
+# last_snapshot variable should be the most recent sunday midnight date based on our chron schedule
+RECENT_SNAPSHOT=$(date -d "last sunday 00:00" +%m%d%Y)
 
 # Sync the data from the base directory to the destination folder
-aws s3 sync "$BASE_DIR" "s3://$BUCKET_NAME/$DESTINATION_FOLDER" --endpoint-url=https://s3.wasabisys.com
-
-# 0 0 * * 0 /bin/bash ~/reth_helpers/snapshot.sh
+aws s3 sync "s3://$BUCKET_NAME/$NODE_CLIENT/$RECENT_SNAPSHOT" "$BASE_DIR" --endpoint-url=https://s3.wasabisys.com

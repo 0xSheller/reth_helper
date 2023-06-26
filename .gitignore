@@ -5,3 +5,4 @@
 *.txt
 .env
 start_erigon.sh
+erigon_snapshot.sh
