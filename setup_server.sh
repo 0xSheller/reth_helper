@@ -15,7 +15,6 @@ sudo chmod +x setup_ufw.sh
 sudo chmod +x setup_siren.sh
 sudo chmod +x start_lighthouse.sh
 sudo chmod +x start_reth.sh
-sudo chmod +x start_erigon.sh
 sudo chmod +x setup_wasabi.sh
 sudo chmod +x snapshot.sh
 sudo chmod +x restore.sh
@@ -27,11 +26,11 @@ source load_variables.sh
 sudo mkdir /$BASE_DIR
 sudo mkdir /$BASE_DIR/$NODE_CLIENT
 sudo mkdir /$BASE_DIR/$NODE_CLIENT/data
-sudo mv /home/ubuntu/reth_helpers/start_reth.sh /$BASE_DIR/$NODE_CLIENT/
+#sudo mv /home/ubuntu/reth_helpers/start_reth.sh /$BASE_DIR/$NODE_CLIENT/
 
 sudo mkdir /$BASE_DIR/lighthouse
 sudo mkdir /$BASE_DIR/lighthouse/data
-sudo mv /home/ubuntu/reth_helpers/start_lighthouse.sh /$BASE_DIR/lighthouse/
+#sudo mv /home/ubuntu/reth_helpers/start_lighthouse.sh /$BASE_DIR/lighthouse/
 
 # 6) Add a cron job entry YOU DO NOT NEED THIS, THIS IS FOR THE MAIN SNAPSHOT, ONLY DO THIS IF YOU WANT TO MAINTAIN YOUR OWN SNAPSHOTS
 #(crontab -l ; echo "0 0 * * 0 /bin/bash ~/reth_helpers/snapshot.sh") | crontab -

@@ -14,6 +14,10 @@ sudo ufw allow 22
 sudo ufw allow 30303/tcp
 sudo ufw allow 30303/udp
 
+# Allow traffic on 9000  for TCP on IPv4 and IPv6 (Lighthouse)
+sudo ufw allow 9000/tcp
+sudo ufw allow 9000/udp
+
 # Allow traffic on port 6006, 6007, 6008 for TCP on IPv4
 sudo ufw allow 6006/tcp
 sudo ufw allow 6007/tcp
