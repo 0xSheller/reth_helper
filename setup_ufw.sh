@@ -24,6 +24,10 @@ sudo ufw allow 6007/tcp
 sudo ufw allow 6008/tcp
 sudo ufw allow 6009/tcp
 
+# Allow traffic on port 69, 96 for TCP on IPv4
+sudo ufw allow 69/tcp
+sudo ufw allow 96/tcp
+
 # Reload UFW to apply the changes
 sudo ufw reload
 

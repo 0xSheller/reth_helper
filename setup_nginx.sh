@@ -85,11 +85,49 @@ server {
 EOL
 '
 
+# Create a configuration file for the RPC HTTP proxy
+sudo bash -c 'cat <<EOL > /etc/nginx/sites-available/rpc-http-proxy
+server {
+    listen 69;
+
+    location / {
+        proxy_pass http://localhost:8545; # The address of the app you are proxying to
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+
+        # Basic Authentication
+        auth_basic "Restricted Content";
+        auth_basic_user_file /etc/nginx/.htpasswd;
+    }
+}
+EOL
+'
+
+# Create a configuration file for the RPC WS proxy
+sudo bash -c 'cat <<EOL > /etc/nginx/sites-available/rpc-ws-proxy
+server {
+    listen 96;
+
+    location / {
+        proxy_pass http://localhost:8546; # The address of the app you are proxying to
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+
+        # Basic Authentication
+        auth_basic "Restricted Content";
+        auth_basic_user_file /etc/nginx/.htpasswd;
+    }
+}
+EOL
+'
+
 # Create a symbolic link to enable the configuration
 sudo ln -s /etc/nginx/sites-available/prometheus-proxy /etc/nginx/sites-enabled/
 sudo ln -s /etc/nginx/sites-available/metrics-proxy /etc/nginx/sites-enabled/
 sudo ln -s /etc/nginx/sites-available/grafana-proxy /etc/nginx/sites-enabled/
 sudo ln -s /etc/nginx/sites-available/siren-proxy /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/rpc-http-proxy /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/rpc-ws-proxy /etc/nginx/sites-enabled/
 sudo rm /etc/nginx/sites-enabled/default
 
 # Reload Nginx to apply the new configuration
