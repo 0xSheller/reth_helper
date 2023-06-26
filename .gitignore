@@ -1,7 +1,4 @@
-
-.idea/modules.xml
-.idea/reth_helpers.iml
-.idea/vcs.xml
+.idea/*
 *.txt
 .env
 start_erigon.sh
