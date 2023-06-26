@@ -44,3 +44,5 @@ use: https://github.com/paradigmxyz/local_reth/tree/main/grafana/provisioning fo
 If you don't plan on taking snapshots of your chaindata, you can remove the snapshot script and the cronjob in setup_server.sh
 
 I will maintain a EBS snapshot of reth at a later point and update these scripts, this is still early but will help others get started.
+
+If you want to maintain your own snapshots, you can use the snapshot script and uncomment the cronjob in setup_server.sh (line 37), otherwise wait for me to finish upload and check back here in a few days

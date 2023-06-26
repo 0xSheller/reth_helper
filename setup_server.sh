@@ -33,8 +33,8 @@ sudo mkdir /$BASE_DIR/lighthouse
 sudo mkdir /$BASE_DIR/lighthouse/data
 sudo mv /home/ubuntu/reth_helpers/start_lighthouse.sh /$BASE_DIR/lighthouse/
 
-# 6) Add a cron job entry
-(crontab -l ; echo "0 0 * * 0 /bin/bash ~/reth_helpers/snapshot.sh") | crontab -
+# 6) Add a cron job entry YOU DO NOT NEED THIS, THIS IS FOR THE MAIN SNAPSHOT, ONLY DO THIS IF YOU WANT TO MAINTAIN YOUR OWN SNAPSHOTS
+#(crontab -l ; echo "0 0 * * 0 /bin/bash ~/reth_helpers/snapshot.sh") | crontab -
 
 # 7) Reboot the server
 sudo reboot
