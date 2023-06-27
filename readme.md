@@ -47,7 +47,7 @@ Cons:
 
 ## Setup
 
-_This script was tested on ubuntu 22.04 on both aarch64 and x86_64. These are the only two supported architecture types by reth. If they add support for others, i will update the script to support them._
+_This script was tested on ubuntu 22.04 on both aarch64 and x86_64. These are the only two supported architecture types by reth. If they add support for others, I will update the script to support them._
 
 Before running the scripts, ensure that you have set up your environment variables in the `.env` file. Here is an example:
 
@@ -80,7 +80,7 @@ The project utilizes the following environment variables, each serving a specifi
 - `LIGHTHOUSE_VERSION` (*optional*): Specifies the version of Lighthouse to be installed. If you have a specific version requirement, set this variable to the desired version. Example: `LIGHTHOUSE_VERSION="4.2.0"`. (defaults to `4.2.0`).
 - `PROMETHEUS_VERSION` (*optional*): Specifies the version of Prometheus to be installed. If you have a specific version requirement, set this variable to the desired version. Example: `PROMETHEUS_VERSION="2.45.0"`. (defaults to `2.45.0`).
 - `S3_PROVIDER` (*optional*): (`wasabi|aws`) Specifies the s3 provider. If you choose to use snapshots, set this variable accordingly. Example: `S3_PROVIDER="wasabi"`. This variable is only applicable if `SNAPSHOT` is set to "true".
-- `S3_BUCKET_NAME` (*optional*): Specifies the name of the S3 bucket for storing snapshots. If you choose to use snapshots, set this variable accordingly. Example: `BUCKET_NAME="rpc-backups"`. This variable is only applicable if `SNAPSHOT` is set to "true".
+- `S3_BUCKET_NAME` (*optional*): Specifies the name of the S3 bucket for storing & retrieving snapshots. If you choose to use snapshots, set this variable accordingly. Example: `BUCKET_NAME="rpc-backups"`. This variable is only applicable if `SNAPSHOT` is set to "true".
 - `AWS_ACCESS_KEY` (*optional*): Sets the AWS access key for snapshot-related operations. If you are using AWS services and need to provide access credentials, set this variable to the appropriate access key. Example: `AWS_ACCESS_KEY="your-access-key"`. If left empty, the script will assume no AWS access key is required.
 - `AWS_SECRET_KEY` (*optional*): Sets the AWS secret key for snapshot-related operations. If you provided an access key, set the corresponding secret key here. Example: `AWS_SECRET_KEY="your-secret-key"`. This variable is only applicable if `AWS_ACCESS_KEY` is set.
 - `AWS_REGION` (*optional*): Specifies the AWS region for snapshot-related operations. If you provided access credentials and need to specify a region, set this variable accordingly. Example: `AWS_REGION="us-west-2"`. This variable is only applicable if `AWS_ACCESS_KEY` is set.
