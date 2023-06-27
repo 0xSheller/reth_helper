@@ -19,23 +19,25 @@ The scripts automate several key tasks to ensure a smooth and secure setup:
 
 ## Why?
 
-We extract **A LOT** of data over at [Rinzo](https://www.twitter.com/rinzo). No RPC provider could handle our load without asking for 15-50k a month. Redundancy and speed concerns also came to mind, We've been exploring solutions to host our own infrastructure as we gear closer to launch. This is the result of that exploration. 
+We extract **A LOT** of data over at [Rinzo](https://www.twitter.com/rinzo). No RPC provider could handle our load without asking for 15-50k a month. 
 
-We still maintain a private erigon archive node for our own purposes (redundancy sake as well), but we've found that reth is much more stable and reliable in under 24h of playing with it. It's that good. We've also found that it's much easier to maintain and update.
+Redundancy and speed concerns also came to mind, we've been exploring solutions to host our own infrastructure as we gear closer to launch. This is the result of that exploration. 
 
-You can spin up a load balancer, and a cluster of RPC's to handle massive amounts of requests for a fraction of the cost of a single provider. For example, you can host this entire script on $50-$100 a month (on a budget) machine, and do without the rate limiting, and achieve higher speeds than going through a RPC provider.
+We still maintain a private erigon archive node for our own purposes (redundancy sake as well), but we've found reth to be reliable and stable (far more than erigon) in just under 24h of playing with it. It's that good. We've also found that it's much easier to maintain and update.
+
+You can spin up a load balancer, and a cluster of RPC's to handle massive amounts of requests for a fraction of the cost of a single provider. For example, you can host this entire script on $50-$100 a month (on a budget) machine, do without the rate limiting, and achieve higher speeds than going through an RPC provider.
 
 ### Why Reth?
 
-reth is a very well put together implementation of the ethereum protocol released by paradigm. Although it was just launched and in alpha, IMO trumps every other implementation out there.
+reth is a very well put together implementation of the ethereum protocol released by paradigm. Although it was just launched and in alpha, (**IMO**) trumps every other implementation out there.
 
-reth takes the best from every other implementation, and combines it into one. You end up with an extremely fast, modular, and reliable implementation.
+reth takes the best from every other implementation, and combines it into one. Which leaves you with an extremely fast, modular, and reliable implementation. All things everyone in the space wants.
 
 Pros:
-- Extremely fast (Written in rust 🤪)
+- Extremely fast (written in rust 🤪)
 - Modular
 - Syncs in 50-75 hours (compared to 2-3 weeks for other implementations)
-- Resource Efficient
+- Resource efficient
 - Uses erigons stages sync architecture, however they've made the process a lot faster, and stable (based on my n=1 sample).
 - Entire archive node is less than 2TB (compared to 3-30TB for other implementations)
 - Actually documented...
