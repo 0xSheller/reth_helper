@@ -1,4 +1,7 @@
 .idea/*
+.idea
 *.txt
 .env
 ignore.txt
+manual_chmod.sh
+manual_snapshot.sh
