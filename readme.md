@@ -9,13 +9,13 @@ This project provides a comprehensive set of scripts to facilitate the  setup an
 
 The scripts automate several key tasks to ensure a smooth and secure setup:
 
-- Automatic instant fully sync'd [reth](https://github.com/paradigmxyz/reth) archive nodes (via my publicly available and maintained S3 bucket via [wasabi](https://wasabi.com/))
+- Automatic instant fully sync'd [reth](https://github.com/paradigmxyz/reth) archive nodes (via my publicly available and maintained S3 bucket on [wasabi](https://wasabi.com/) - or setup your own!)
 - Automatic provisioning of server security measures, including firewall configuration and authenticated reverse proxies via nginx, to protect your infrastructure from unauthorized access.
-- Automated creation and maintenance of weekly snapshots for your nodes, providing data redundancy and easy recovery options.
+- Automated creation and maintenance of weekly snapshots for your nodes, providing data redundancy, easy frustration-free scalability, and recovery options.
 - Automatically sets up [Prometheus](https://github.com/prometheus/prometheus) for monitoring and observability purposes
 - Automatically sets up [Grafana](https://github.com/grafana/grafana) with an imported [rETH dashboard](https://github.com/paradigmxyz/local_reth/tree/main/grafana/provisioning), providing visualizations and insights into your Ethereum archive node.
 - Automatically sets up [Lighthouse](https://github.com/sigp/lighthouse), enabling you to contribute (and/or follow) the Ethereum network and validate blockchain transactions.
-- Automatically sets up Siren, a powerful user Interface for the [Lighthouse](https://github.com/sigp/siren) Ethereum Beacon Node and Validator Client.
+- Automatically sets up [Siren](https://github.com/sigp/siren), a powerful user interface the your Validator.
 
 ## Why?
 
