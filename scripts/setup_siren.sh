@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# Load the environment variables
-source load_variables.sh
+current_directory="$(dirname "$(readlink -f "$0")")"
+IFS="/" read -ra dir_array <<< "${current_directory#/}"  # Remove leading slash
+parsed_dir="/${dir_array[0]}/${dir_array[1]}/${dir_array[2]}"
+source "${parsed_dir}/scripts/load_variables.sh"
+source "${parsed_dir}/scripts/get_os_arch.sh"
 
 # Update package information
 sudo apt-get update
@@ -36,7 +39,3 @@ sudo make docker
 # Run Siren in a Docker container
 sudo docker run --rm -ti -d --name siren -p 6969:80 siren -d
 
-# We need to get current servers ipv4 address
-public_ip=$(curl -s https://ipinfo.io/ip)
-
-echo "Siren is now accessible at http://$public_ip:6009"

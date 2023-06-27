@@ -1,33 +1,37 @@
 #!/bin/bash
 
-# Load the environment variables
-source load_variables.sh
+current_directory="$(dirname "$(readlink -f "$0")")"
+IFS="/" read -ra dir_array <<< "${current_directory#/}"  # Remove leading slash
+parsed_dir="/${dir_array[0]}/${dir_array[1]}/${dir_array[2]}"
+source "${parsed_dir}/scripts/load_variables.sh"
+source "${parsed_dir}/scripts/get_os_arch.sh"
 
 # Download Prometheus
-wget "https://github.com/prometheus/prometheus/releases/download/v${PROMETHEUS_VERSION}/prometheus-${PROMETHEUS_VERSION}.linux-${ARCH}.tar.gz"
+wget "https://github.com/prometheus/prometheus/releases/download/v${PROMETHEUS_VERSION}/prometheus-${PROMETHEUS_VERSION}.${OS}-${ARCH}.tar.gz"
+echo "https://github.com/prometheus/prometheus/releases/download/v${PROMETHEUS_VERSION}/prometheus-${PROMETHEUS_VERSION}.${OS}-${ARCH}.tar.gz"
 
 # Extract the downloaded file
-tar xvfz "prometheus-${PROMETHEUS_VERSION}.linux-${ARCH}.tar.gz"
+tar xvfz "prometheus-${PROMETHEUS_VERSION}.${OS}-${ARCH}.tar.gz"
 
 # Move Prometheus and configuration files to /usr/local/bin
-sudo mv "prometheus-${PROMETHEUS_VERSION}.linux-${ARCH}/prometheus" /usr/local/bin/
-sudo mv "prometheus-${PROMETHEUS_VERSION}.linux-${ARCH}/promtool" /usr/local/bin/
+sudo mv "prometheus-${PROMETHEUS_VERSION}.${OS}-${ARCH}/prometheus" /usr/local/bin/
+sudo mv "prometheus-${PROMETHEUS_VERSION}.${OS}-${ARCH}/promtool" /usr/local/bin/
 
 # Move consoles and console_libraries directories to /etc/prometheus
 sudo mkdir -p /etc/prometheus
-sudo mv "prometheus-${PROMETHEUS_VERSION}.linux-${ARCH}/consoles" /etc/prometheus
-sudo mv "prometheus-${PROMETHEUS_VERSION}.linux-${ARCH}/console_libraries" /etc/prometheus
+sudo mv "prometheus-${PROMETHEUS_VERSION}.${OS}-${ARCH}/consoles" /etc/prometheus
+sudo mv "prometheus-${PROMETHEUS_VERSION}.${OS}-${ARCH}/console_libraries" /etc/prometheus
 
 # Move prometheus.yml to /etc/prometheus and add the target localhost:5005
-sudo mv "prometheus-${PROMETHEUS_VERSION}.linux-${ARCH}/prometheus.yml" /etc/prometheus
+sudo mv "prometheus-${PROMETHEUS_VERSION}.${OS}-${ARCH}/prometheus.yml" /etc/prometheus
 echo "  - job_name: 'localhost'
     static_configs:
     - targets: ['localhost:5005']
 " | sudo tee -a /etc/prometheus/prometheus.yml
 
 # Clean up the downloaded files
-rm -rf "prometheus-${PROMETHEUS_VERSION}.linux-${ARCH}"
-rm "prometheus-${PROMETHEUS_VERSION}.linux-${ARCH}.tar.gz"
+rm -rf "prometheus-${PROMETHEUS_VERSION}.${OS}-${ARCH}"
+rm "prometheus-${PROMETHEUS_VERSION}.${OS}-${ARCH}.tar.gz"
 
 # Create a systemd service file for Prometheus
 sudo bash -c 'cat << EOL > /etc/systemd/system/prometheus.service
@@ -58,8 +62,3 @@ sudo mkdir -p /var/lib/prometheus
 sudo systemctl daemon-reload
 sudo systemctl enable prometheus
 sudo systemctl start prometheus
-
-# We need to get current servers ipv4 address
-public_ip=$(curl -s https://ipinfo.io/ip)
-
-echo "Prometheus is now accessible at http://$public_ip:6006 (Metrics accessible at http://$public_ip:6007 for whatever reason if you need that)"

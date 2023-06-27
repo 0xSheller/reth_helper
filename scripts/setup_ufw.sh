@@ -5,7 +5,7 @@ sudo apt-get update
 sudo apt-get install -y ufw
 
 # Enable UFW
-sudo ufw enable
+sudo ufw --force enable
 
 # Allow port 22 because we need SSH and i already locked myself out accidently FML
 sudo ufw allow 22
