@@ -22,6 +22,7 @@ sudo chmod +x "${scripts_directory}/scripts/setup_ufw.sh"
 sudo chmod +x "${scripts_directory}/scripts/snapshot.sh"
 sudo chmod +x "${scripts_directory}/scripts/start_lighthouse.sh"
 sudo chmod +x "${scripts_directory}/scripts/start_reth.sh"
+sudo chmod +x "${scripts_directory}/scripts/setup_services.sh"
 sudo chmod +x "setup_node.sh"
 
 # 4) Load the environment variables

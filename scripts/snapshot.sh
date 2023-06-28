@@ -17,20 +17,22 @@ SOURCE_FOLDER="/$BASE_DIR/$NODE_CLIENT/data"
 
 ### This whole section can probably be cleaner and more efficient, but it works for now ###
 
-# Compress the directory using tar and pigz
-tar --exclude="$SOURCE_FOLDER/jwt.hex" --use-compress-program="pigz -9 -k" -cf "$SOURCE_FOLDER.tar.gz" "$SOURCE_FOLDER"
+# Compress the directory using tar and pigz (pigz is faster than gzip, but also don't set compression level to 9, it's slower than 6 and doesn't compress much more)
+tar --exclude="$SOURCE_FOLDER/jwt.hex" --use-compress-program="pigz -k" -cf "$SOURCE_FOLDER.tar.gz" "$SOURCE_FOLDER"
+
+touch /$BASE_DIR/$NODE_CLIENT/data.tar.gz
 
 #  Sync the data from the base directory to the destination folder
 if [ "$S3_PROVIDER" = "wasabi" ]; then
     # Add the --endpoint-url argument to the aws s3 sync command
-    aws s3 cp "$SOURCE_FOLDER.tar.gz" "s3://$S3_BUCKET_NAME/$DESTINATION_FOLDER/$SOURCE_FOLDER.tar.gz" --endpoint-url=https://s3.wasabisys.com
+    aws s3 cp "/$BASE_DIR/$NODE_CLIENT/data.tar.gz" "s3://${S3_BUCKET_NAME}/${DESTINATION_FOLDER}/" --endpoint-url=https://s3.wasabisys.com
 else
     # Run the aws s3 sync command without the --endpoint-url argument
-    aws s3 cp "$SOURCE_FOLDER.tar.gz" "s3://$S3_BUCKET_NAME/$DESTINATION_FOLDER/$SOURCE_FOLDER.tar.gz"
+    aws s3 cp "/$BASE_DIR/$NODE_CLIENT/data.tar.gz" "s3://${S3_BUCKET_NAME}/${DESTINATION_FOLDER}/"
 fi
 
 # Delete the compressed file from the local machine
-rm "/$BASE_DIR/$NODE_CLIENT/data.tar.gz"
+sudo rm "/$BASE_DIR/$NODE_CLIENT/data.tar.gz"
 
 # Count the number of directories in the bucket
 if [ "$S3_PROVIDER" = "wasabi" ]; then
@@ -58,4 +60,3 @@ if [ "$DIR_COUNT" -ge 5 ]; then
       aws s3 rm --recursive "s3://$S3_BUCKET_NAME/$OLDEST_DIR"
   fi
 fi
-

@@ -91,7 +91,7 @@ Please note that the mandatory environment variables must be correctly set for t
 If you'd like to use my publicly accessible images:
 1) set `SYNC_FROM` to `public`
 2) set `S3_PROVIDER` to `wasabi`
-3) set `S3_BUCKET_NAME` to `rpc-backups`
+3) set `S3_BUCKET_NAME` to `rpc`
 
 ## Installation Steps
 
@@ -117,11 +117,6 @@ sudo ./setup_server.sh
 sudo ./setup_node.sh
 ```
 
-5. All you need to now is launch the startup script however you'd like. A few methods: 
-- `nohup ./scripts/start_lighthouse.sh &` AND `nohup ./scripts/start_reth.sh &`
-- `screen -R something` then run `./start_lighthouse.sh`, create another screen and run `./start_reth.sh`
-- create a systemd service for both scripts (this part will be automated in next release probably tomorrow)
-
 ### and you're done!
 
 ## Support
@@ -132,6 +127,10 @@ I designed the snapshot mechanism to only retain 4 active snapshots, which is ar
 It'd be nice to not have to pay for this out of pocket for the foreseeable future, so if you found value in this repo, feel free to send a dollar or two to my ETH address `0x4286a468f267343f611Ee5057059522Dc922eAAD`
 
 Especially big thank you to:
-[0xSheller](https://github.com/0xSheller) (because I love myself)
-[Paradigm](https://github.com/paradigmxyz) (for putting together one of the best ethereum protocol implementations)
-[Gui @ Latitude](https://latitude.sh) (for providing me with $200 in credits to develop this project)
+| Contributor                                     | Contribution                                                                                          |
+|--------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| [0xSheller](https://github.com/0xSheller)        | Love and support for the project                                                                       |
+| [Paradigm](https://github.com/paradigmxyz)       | Assembling one of the best Ethereum protocol implementations                                          |
+| [Gui @ Latitude](https://latitude.sh)            | Generously providing $200 in credits for the development of this project                             |
+
+In this table, we express our gratitude to the contributors for their various contributions to the project.

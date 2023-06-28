@@ -65,17 +65,10 @@ echo -e "${ORANGE}${BOLD}Setting up Siren...${NORMAL}"
 #screen -dmS siren sudo "${scripts_directory}/scripts/setup_siren.sh"
 echo -e "${GREEN}Siren setup completed.${NC}"
 
-## Commented out for now, do it manually.
-## Start rETH
-#echo -e "${ORANGE}${BOLD}Starting rETH...${NORMAL}"
-#screen -dmS reth sudo "${scripts_directory}/scripts/start_reth.sh"
-#echo -e "${GREEN}rETH started.${NC}"
-#
-## Start Lighthouse
-#echo -e "${ORANGE}${BOLD}Starting Lighthouse...${NORMAL}"
-#sudo screen -dmS lighthouse "${scripts_directory}/scripts/start_lighthouse.sh"
-#screen -dmS lighthouse /bin/bash -c "./${scripts_directory}/scripts/start_lighthouse.sh"
-#echo -e "${GREEN}Lighthouse started.${NC}"
+# Commented out for now, do it manually.
+echo -e "${ORANGE}${BOLD}Starting rETH & Lighthouse...${NORMAL}"
+screen -dmS reth sudo "${scripts_directory}/scripts/setup_services.sh"
+echo -e "${GREEN}rETH & Lighthouse started.${NC}"
 
 echo -e "${GREEN}${BOLD}Script execution completed.${NORMAL}"
 
