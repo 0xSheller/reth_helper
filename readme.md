@@ -129,7 +129,7 @@ It'd be nice to not have to pay for this out of pocket for the foreseeable futur
 Especially big thank you to:
 | Contributor                                     | Contribution                                                                                          |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| [0xSheller](https://github.com/0xSheller)        | Love and support for the project                                                                       |
+| [0xSheller](https://github.com/0xSheller)        | Love and support for the project (I love myself)                                                                       |
 | [Paradigm](https://github.com/paradigmxyz)       | Assembling one of the best Ethereum protocol implementations                                          |
 | [Gui @ Latitude](https://latitude.sh)            | Generously providing $200 in credits for the development of this project                             |
 
