@@ -41,6 +41,11 @@ echo "Run the following commands to monitor reth & lighthouse:"
 echo "sudo systemctl status lighthouse.service"
 echo "sudo systemctl status reth.service"
 
+echo "and to get logs..."
+
+echo "sudo journalctl -u lighthouse -f"
+echo "sudo journalctl -u reth -f"
+
 echo -e "\n"
 echo -e "\n"
 echo -e "Notes:"
