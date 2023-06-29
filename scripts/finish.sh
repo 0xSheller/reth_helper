@@ -20,7 +20,7 @@ output_file="${parsed_dir}/setup_summary.txt"
 exec > >(tee -i "$output_file")
 
 # Format the messages
-header="Thanks for using 0xShellers setup script https://github.com/0xSheller/reth_helper! If you would like to support the public repos, please consider donating to 0x4286a468f267343f611Ee5057059522Dc922eAAD (you don't need to all, this is just if you would like to help pay for the wasabi server bill), otherwise enjoy your new node!"
+header="Thanks for using 0xSheller setup script https://github.com/0xSheller/reth_helper! If you would like to support the public repos, please consider donating to 0x4286a468f267343f611Ee5057059522Dc922eAAD (you don't need to all, this is just if you would like to help pay for the wasabi server bill), otherwise enjoy your new node!"
 echo "$header"
 
 echo -e "\nMonitoring URLs:"
@@ -47,9 +47,6 @@ echo -e "Notes:"
 echo "------------------"
 
 echo "It is recommended to visit the grafana endpoint ASAP, as it will prompt you to change the default password."
-echo -e "\n"
-echo "Sometimes, the grafana import does not go according to plan, as in the datasource does not get imported automatically."
-echo "To fix this, edit datasources in the grafana dashboard, set the URL to http://localhost:9090 and enable skip tls verify. Make sure to save."
 echo -e "\n"
 echo "Remember, all endpoints except for Grafana are protected by basic auth ($NGINX_USER:$NGINX_PASS)"
 
