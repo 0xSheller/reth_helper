@@ -118,7 +118,9 @@ sudo ./setup_server.sh
 sudo ./setup_node.sh
 ```
 
-### and you're done!
+#### and you're done!
+
+checkout the `setup_summary.txt` for all endpoints, and credentials. 
 
 ## Known Bugs
 
