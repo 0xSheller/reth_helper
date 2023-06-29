@@ -2,9 +2,6 @@
 
 ## Description
 
-**Note: This project works, A-Z, however my S3 Bucket is not done. I'm experimenting with different compression methods to get the size down, expect the snapshot to be ready in the next 24h. In the meantime, if you're eager, to get started with reth, just set `SYNC_FROM` to `chain` and everything will be setup automatically.**
-
-
 This project provides a comprehensive set of scripts to facilitate the  setup and management of reth, allowing you to quickly create and maintain Ethereum archive nodes. Whether you prefer utilizing pre-existing S3 bucket snapshots or manually syncing your node, this project has you covered.
 
 The scripts automate several key tasks to ensure a smooth and secure setup:
@@ -88,10 +85,14 @@ The project utilizes the following environment variables, each serving a specifi
 Please note that the mandatory environment variables must be correctly set for the project to function properly. The optional variables can be left empty if you do not require their corresponding functionality.
 
 #### My Maintained Snapshots
-If you'd like to use my publicly accessible images:
+My publicly available (anyone can download) snapshots are available on the Wasabi S3 service, on the bucket named `rpc`.
+
+If you'd like to use my publicly accessible images to get a fully sync'd archive node in 30-90 minutes, you can do the following:
 1) set `SYNC_FROM` to `public`
 2) set `S3_PROVIDER` to `wasabi`
 3) set `S3_BUCKET_NAME` to `rpc`
+
+Snapshots are automatically uploaded to this bucket every 7 days.
 
 ## Installation Steps
 
@@ -101,23 +102,46 @@ Follow these steps in the given order to set up the project:
 
 2. Run the following command to grant execute permissions to the setup_server.sh script:
 
-```
+```Bash
 chmod +x setup_server.sh
 ```
 
 3. Execute the setup_server.sh script with administrative privileges:
 
-```
+```Bash
 sudo ./setup_server.sh
 ```
 
 4. After reboot, Run the run.sh script as root:
 
-```
+```Bash
 sudo ./setup_node.sh
 ```
 
 ### and you're done!
+
+## Known Bugs
+
+Added this section because I can't dedicate much more time to this, Need to focus on other things. When i have time in the future i will fix these bugs, but here's a list of known bugs:
+
+1. Grafana dashboard doesn't display correct data
+
+This is because sometimes during import, the json gets messed up. Not sure why, but to fix this head over to datasources, edit the prometheus data source, and set it to "http://localhost:9090" and save. This should fix the issue.
+
+2. The services don't start
+
+This is because i'm assuming you changed the project layout, this is a easy fix, simply run: 
+```Bash
+sudo nano /etc/systemd/system/reth.service
+```
+
+AND
+
+```Bash
+sudo nano /etc/systemd/system/reth.service
+```
+
+and change the `WorkingDirectory` to the correct path. IE: `ExecStart=/bin/bash /home/ubuntu/reth_helper/scripts/start_lighthouse.sh` and `ExecStart=/bin/bash /home/ubuntu/reth_helper/scripts/start_reth.sh`
 
 ## Support
 Thank you for using this project. Your feedback and contributions are appreciated.
