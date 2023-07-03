@@ -97,22 +97,26 @@ Snapshots are automatically uploaded to this bucket every 7 days.
 ## Installation Steps
 
 Follow these steps in the given order to set up the project:
+1. Download the script
+```Bash
+curl -LO https://github.com/0xSheller/reth_helper/archive/refs/heads/main.zip && unzip main.zip && mv reth_helper-main reth_helper
+```
 
-1. Setup your .env
+2. Setup your .env
 
-2. Run the following command to grant execute permissions to the setup_server.sh script:
+3. Run the following command to grant execute permissions to the setup_server.sh script:
 
 ```Bash
 chmod +x setup_server.sh
 ```
 
-3. Execute the setup_server.sh script with administrative privileges:
+4. Execute the setup_server.sh script with administrative privileges:
 
 ```Bash
 sudo ./setup_server.sh
 ```
 
-4. After reboot, Run the run.sh script as root:
+5. After reboot, Run the run.sh script as root:
 
 ```Bash
 sudo ./setup_node.sh
