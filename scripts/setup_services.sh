@@ -19,7 +19,7 @@ Wants=network-online.target
 
 [Service]
 User=$USER
-ExecStart=/bin/bash $CURRENT_DIRECTORY/scripts/start_reth.sh
+ExecStart=/bin/bash $parsed_dir/scripts/start_reth.sh
 Restart=always
 RestartSec=30s
 
@@ -43,7 +43,7 @@ Wants=network-online.target
 
 [Service]
 User=$USER
-ExecStart=/bin/bash $CURRENT_DIRECTORY/scripts/start_lighthouse.sh
+ExecStart=/bin/bash $parsed_dir/scripts/start_lighthouse.sh
 Restart=always
 RestartSec=30s
 
