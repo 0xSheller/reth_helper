@@ -2,13 +2,18 @@
 
 current_directory="$(dirname "$(readlink -f "$0")")"
 IFS="/" read -ra dir_array <<< "${current_directory#/}"  # Remove leading slash
-parsed_dir="/${dir_array[0]}/${dir_array[1]}/${dir_array[2]}"
+if [ ${#dir_array[@]} -eq 3 ]; then
+    parsed_dir="/${dir_array[0]}/${dir_array[1]}/${dir_array[2]}"
+else
+    parsed_dir="/${dir_array[0]}/${dir_array[1]}"
+fi
 
 # 1) Update the system
 sudo apt-get update
 
 # 2) Upgrade the system
 sudo apt-get upgrade -y
+sudo apt-get install unzip screen -y
 
 # 3) Make another script executable
 sudo chmod +x "${parsed_dir}/scripts/finish.sh"

@@ -5,7 +5,11 @@ set -a
 
 current_directory="$(dirname "$(readlink -f "$0")")"
 IFS="/" read -ra dir_array <<< "${current_directory#/}"  # Remove leading slash
-parsed_dir="/${dir_array[0]}/${dir_array[1]}/${dir_array[2]}"
+if [ ${#dir_array[@]} -eq 3 ]; then
+    parsed_dir="/${dir_array[0]}/${dir_array[1]}/${dir_array[2]}"
+else
+    parsed_dir="/${dir_array[0]}/${dir_array[1]}"
+fi
 source "${parsed_dir}/.env"
 
 set +a
