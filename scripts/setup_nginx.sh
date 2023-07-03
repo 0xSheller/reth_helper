@@ -120,6 +120,11 @@ server {
         proxy_set_header Host \$host;
         proxy_set_header X-Real-IP \$remote_addr;
 
+        # WebSocket support
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+
         # Basic Authentication
         auth_basic "Restricted Content";
         auth_basic_user_file /etc/nginx/.htpasswd;
