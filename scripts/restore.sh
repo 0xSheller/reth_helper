@@ -20,8 +20,8 @@ DESTINATION_FOLDER="/$BASE_DIR/$NODE_CLIENT/data/"
 
 if [ "$S3_PROVIDER" = "wasabi" ]; then
     # Add the --endpoint-url argument to the aws s3 sync command
-    aws s3 sync "s3://$S3_BUCKET_NAME/$NODE_CLIENT/$RECENT_SNAPSHOT/" "$DESTINATION_FOLDER" --endpoint-url=https://s3.wasabisys.com
+    aws s3 sync "s3://$S3_BUCKET_NAME/$NODE_CLIENT/$RECENT_SNAPSHOT/" "$DESTINATION_FOLDER" --endpoint-url=https://s3.wasabisys.com --no-sign-request
 else
     # Run the aws s3 sync command without the --endpoint-url argument
-    aws s3 sync "s3://$S3_BUCKET_NAME/$NODE_CLIENT/$RECENT_SNAPSHOT/" "$DESTINATION_FOLDER"
+    aws s3 sync "s3://$S3_BUCKET_NAME/$NODE_CLIENT/$RECENT_SNAPSHOT/" "$DESTINATION_FOLDER" --no-sign-request
 fi
