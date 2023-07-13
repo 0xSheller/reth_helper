@@ -13,7 +13,10 @@ source "${parsed_dir}/scripts/get_os_arch.sh"
 ## TODO: pull the most recent snapshot date from the bucket, possibly some kind of .json or something that the snapshot.sh script writes to when it runs, because current implementation assumes that snapshots will be maintained indefinitely
 
 # last_snapshot variable should be the most recent monday midnight date based on our chron schedule
-RECENT_SNAPSHOT=$(date -d "last monday 00:00" +%m%d%Y)
+#RECENT_SNAPSHOT=$(date -d "last monday 00:00" +%m%d%Y)
+
+# Hardcoded because can't snapshot while node is live, need to figure it out later don't have time right now.
+RECENT_SNAPSHOT="06262023"
 
 # Set the destination folder path in the bucket
 DESTINATION_FOLDER="/$BASE_DIR/$NODE_CLIENT/data/"
