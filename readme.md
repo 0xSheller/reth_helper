@@ -1,5 +1,7 @@
 # rETH Instant Deploys
 
+Unfortunately there's been such a high demand on this that my Wasabi egress was simply too expensive for Wasabi and they shut off public access on my repos. Working on transfering over to S3 when i have some free time. You can still use this repo, just set `SYNC_FROM` to `chain` sync rather than `s3`.
+
 ## Description
 
 This project provides a comprehensive set of scripts to facilitate the  setup and management of reth, allowing you to quickly create and maintain Ethereum archive nodes. Whether you prefer utilizing pre-existing S3 bucket snapshots or manually syncing your node, this project has you covered.
