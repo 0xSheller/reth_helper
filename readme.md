@@ -57,7 +57,7 @@ SYNC_FROM="public"
 BASE_DIR="chain"
 NGINX_USER="user"
 NGINX_PASS="password"
-RETH_VERSION="0.1.0"
+RETH_VERSION="0.1.0-alpha.1"
 LIGHTHOUSE_VERSION="4.2.0"
 PROMETHEUS_VERSION="2.45.0"
 S3_PROVIDER="wasabi"
@@ -75,7 +75,7 @@ The project utilizes the following environment variables, each serving a specifi
 - `BASE_DIR` (*optional*): Specifies the directory where the data will be stored. Example: `BASE_DIR="chain"`. (defaults to `chain`)
 - `NGINX_USER` (*optional*): Sets the username for Nginx authentication. Example: `NGINX_USER="user"`.
 - `NGINX_PASS` (*optional*): Sets the password for Nginx authentication. Example: `NGINX_PASS="securepassword"`.
-- `RETH_VERSION` (*optional*): Specifies the version of rETH to be installed. If you have a specific version requirement, set this variable to the desired version. Example: `RETH_VERSION="0.1.0"`. (defaults to `0.1.0`).
+- `RETH_VERSION` (*optional*): Specifies the version of rETH to be installed. If you have a specific version requirement, set this variable to the desired version. Example: `RETH_VERSION="0.1.0-alpha.8"`. (defaults to `0.1.0-alpha.1`).
 - `LIGHTHOUSE_VERSION` (*optional*): Specifies the version of Lighthouse to be installed. If you have a specific version requirement, set this variable to the desired version. Example: `LIGHTHOUSE_VERSION="4.2.0"`. (defaults to `4.2.0`).
 - `PROMETHEUS_VERSION` (*optional*): Specifies the version of Prometheus to be installed. If you have a specific version requirement, set this variable to the desired version. Example: `PROMETHEUS_VERSION="2.45.0"`. (defaults to `2.45.0`).
 - `S3_PROVIDER` (*optional*): (`wasabi|aws`) Specifies the s3 provider. If you choose to use snapshots, set this variable accordingly. Example: `S3_PROVIDER="wasabi"`. This variable is only applicable if `SNAPSHOT` is set to "true".

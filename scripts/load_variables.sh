@@ -19,7 +19,7 @@ set +a
 : ${SNAPSHOT:=false}
 : ${SYNC_FROM:=chain}
 : ${BASE_DIR:=chain}
-: ${RETH_VERSION:=0.1.0}
+: ${RETH_VERSION:=0.1.0-alpha.1}
 : ${LIGHTHOUSE_VERSION:=4.2.0}
 : ${PROMETHEUS_VERSION:=2.45.0}
 : ${S3_PROVIDER:=wasabi}

@@ -59,8 +59,8 @@ sudo mkdir /$BASE_DIR/lighthouse
 sudo mkdir /$BASE_DIR/lighthouse/data
 
 # 9) Grab the right bins for reth
-RETH_NAME="reth-v${RETH_VERSION}-alpha.1-${ARCH_RAW}-unknown-linux-gnu.tar.gz"
-RETH_URL="https://github.com/paradigmxyz/reth/releases/download/v${RETH_VERSION}-alpha.4/${RETH_NAME}"
+RETH_NAME="reth-v${RETH_VERSION}-${ARCH_RAW}-unknown-linux-gnu.tar.gz"
+RETH_URL="https://github.com/paradigmxyz/reth/releases/download/v${RETH_VERSION}/${RETH_NAME}"
 echo "Downloading reth from ${RETH_URL}"
 curl -LOs ${RETH_URL}
 tar -xzf ${RETH_NAME} -C /$BASE_DIR/$NODE_CLIENT/
