@@ -31,7 +31,8 @@ sudo mv "prometheus-${PROMETHEUS_VERSION}.${OS}-${ARCH}/console_libraries" /etc/
 sudo mv "prometheus-${PROMETHEUS_VERSION}.${OS}-${ARCH}/prometheus.yml" /etc/prometheus
 echo "  - job_name: 'localhost'
     static_configs:
-    - targets: ['localhost:5005']
+    - targets: ['localhost:5005','localhost:5054']
+
 " | sudo tee -a /etc/prometheus/prometheus.yml
 
 # Clean up the downloaded files
