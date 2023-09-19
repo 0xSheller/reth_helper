@@ -12,7 +12,7 @@ The scripts automate several key tasks to ensure a smooth and secure setup:
 - Automatic provisioning of server security measures, including firewall configuration and authenticated reverse proxies via nginx, to protect your infrastructure from unauthorized access.
 - Automated creation and maintenance of weekly snapshots for your nodes, providing data redundancy, easy frustration-free scalability, and recovery options.
 - Automatically sets up [Prometheus](https://github.com/prometheus/prometheus) for monitoring and observability purposes
-- Automatically sets up [Grafana](https://github.com/grafana/grafana) with an imported [rETH dashboard](https://github.com/paradigmxyz/local_reth/tree/main/grafana/provisioning), providing visualizations and insights into your Ethereum archive node.
+- Automatically sets up [Grafana](https://github.com/grafana/grafana) with an imported [rETH dashboard](https://github.com/paradigmxyz/local_reth/tree/main/grafana/provisioning) and [LightHouse dashboards](https://github.com/sigp/lighthouse-metrics/tree/master/dashboards),  providing visualizations and insights into your Ethereum archive node.
 - Automatically sets up [Lighthouse](https://github.com/sigp/lighthouse), enabling you to contribute (and/or follow) the Ethereum network and validate blockchain transactions.
 - Automatically sets up [Siren](https://github.com/sigp/siren), a powerful user interface the your Validator.
 
