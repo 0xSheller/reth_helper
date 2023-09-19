@@ -29,7 +29,7 @@ sudo apt-get update
 sudo apt-get install -y docker-ce
 
 # Download Siren
-curl -LO https://github.com/sigp/siren/archive/refs/tags/v0.1.0-beta.4.tar.gz
+curl -LO https://github.com/sigp/siren/archive/refs/tags/v1.0.1.tar.gz
 
 # Unzip Siren
 tar xvfz "v0.1.0-beta.4.tar.gz"
